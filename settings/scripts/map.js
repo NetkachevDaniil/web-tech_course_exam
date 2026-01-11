@@ -1,247 +1,209 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Данные для карты - учебные ресурсы в Москве
+    // Ресурсы для изучения китайского языка в Москве
     const resources = [
         {
             id: 1,
-            name: 'Китайский культурный центр',
-            type: 'center',
-            address: 'ул. Никольская, 12',
-            coordinates: [55.7538, 37.6198],
-            workingHours: 'Пн-Пт: 10:00-20:00, Сб-Вс: 11:00-18:00',
-            description: 'Центр китайской культуры с библиотекой, языковыми курсами и культурными мероприятиями',
-            services: 'Языковые курсы, библиотека, выставки, чайные церемонии'
+            name: 'Институт Конфуция МГУ',
+            type: 'education',
+            address: 'Ленинские горы, д. 1, Москва',
+            coordinates: [55.7039, 37.5286],
+            workingHours: 'Пн-Пт: 9:00-18:00',
+            contact: '+7 (495) 939-00-00',
+            description: 'Курсы китайского языка всех уровней, подготовка к HSK',
+            services: 'Языковые курсы, тестирование HSK, культурные мероприятия'
         },
         {
             id: 2,
-            name: 'Библиотека восточной литературы',
-            type: 'library',
-            address: 'ул. Космодамианская, 24',
-            coordinates: [55.7308, 37.6427],
-            workingHours: 'Пн-Пт: 9:00-21:00, Сб-Вс: 10:00-19:00',
-            description: 'Специализированная библиотека с литературой на китайском языке и по китаеведению',
-            services: 'Книги, журналы, интернет-зал, консультации'
+            name: 'Китайский культурный центр',
+            type: 'center',
+            address: 'ул. Правды, д. 1, Москва',
+            coordinates: [55.7964, 37.5836],
+            workingHours: 'Вт-Вс: 10:00-20:00',
+            contact: '+7 (495) 612-11-22',
+            description: 'Центр китайской культуры и языка',
+            services: 'Выставки, лекции, языковые курсы, библиотека'
         },
         {
             id: 3,
-            name: 'Языковой клуб "Восток-Запад"',
-            type: 'education',
-            address: 'ул. Тверская, 18',
-            coordinates: [55.7607, 37.6076],
-            workingHours: 'Пн-Пт: 14:00-22:00, Сб-Вс: 12:00-20:00',
-            description: 'Клуб для практики китайского языка и обмена культурным опытом',
-            services: 'Языковые клубы, мастер-классы, культурные мероприятия'
+            name: 'Библиотека иностранной литературы',
+            type: 'library',
+            address: 'ул. Николоямская, д. 1, Москва',
+            coordinates: [55.7445, 37.6464],
+            workingHours: 'Пн-Пт: 9:00-21:00, Сб-Вс: 10:00-18:00',
+            contact: '+7 (495) 915-36-41',
+            description: 'Крупнейшая библиотека с литературой на китайском языке',
+            services: 'Книги, журналы, языковые клубы, электронные ресурсы'
         },
         {
             id: 4,
-            name: 'Кафе языкового обмена "Dragon"',
+            name: 'Языковой клуб "Восток"',
             type: 'cafe',
-            address: 'ул. Арбат, 37',
+            address: 'ул. Арбат, д. 45, Москва',
             coordinates: [55.7495, 37.5905],
             workingHours: 'Пн-Чт: 12:00-23:00, Пт-Вс: 12:00-00:00',
+            contact: '+7 (495) 123-45-67',
             description: 'Кафе для практики китайского языка в неформальной обстановке',
-            services: 'Языковые встречи, игры, китайская кухня, общение'
+            services: 'Языковые встречи, игры, разговорные клубы'
         },
         {
             id: 5,
-            name: 'Институт Конфуция при МГУ',
+            name: 'Школа китайского языка "Ханьцзы"',
             type: 'education',
-            address: 'Ленинские горы, 1',
-            coordinates: [55.7039, 37.5286],
-            workingHours: 'Пн-Пт: 8:00-20:00',
-            description: 'Официальный представитель Института Конфуция, курсы китайского языка для всех уровней',
-            services: 'Языковые курсы, тестирование HSK, библиотека, культурные мероприятия'
+            address: 'ул. Тверская, д. 22, Москва',
+            coordinates: [55.7620, 37.6070],
+            workingHours: 'Пн-Вс: 9:00-21:00',
+            contact: '+7 (495) 222-33-44',
+            description: 'Специализированная школа китайского языка',
+            services: 'Курсы для всех уровней, индивидуальные занятия, подготовка к HSK'
         },
         {
             id: 6,
-            name: 'Центр китайского языка "Хань Юй"',
-            type: 'education',
-            address: 'ул. Покровка, 27',
-            coordinates: [55.7599, 37.6435],
-            workingHours: 'Пн-Пт: 9:00-21:00, Сб: 10:00-18:00',
-            description: 'Специализированный центр изучения китайского языка с носителями языка',
-            services: 'Индивидуальные и групповые занятия, подготовка к экзаменам, бизнес-китайский'
-        },
-        {
-            id: 7,
-            name: 'Музей Востока',
+            name: 'Азиатский культурный центр',
             type: 'center',
-            address: 'Николоямская ул., 12а',
-            coordinates: [55.7504, 37.6474],
-            workingHours: 'Вт-Вс: 10:00-19:00',
-            description: 'Крупнейший музей восточной культуры с богатой коллекцией артефактов из Китая',
-            services: 'Экскурсии, лекции, выставки, образовательные программы'
-        },
-        {
-            id: 8,
-            name: 'Китайский книжный магазин "Читай-город"',
-            type: 'library',
-            address: 'ул. Мясницкая, 24',
-            coordinates: [55.7628, 37.6498],
-            workingHours: 'Пн-Вс: 10:00-22:00',
-            description: 'Книжный магазин с большим выбором литературы на китайском языке и учебных материалов',
-            services: 'Книги, учебники, художественная литература, китайская периодика'
+            address: 'Проспект Мира, д. 95, Москва',
+            coordinates: [55.7877, 37.6338],
+            workingHours: 'Вт-Вс: 10:00-20:00',
+            contact: '+7 (495) 555-66-77',
+            description: 'Центр азиатских культур с акцентом на Китай',
+            services: 'Выставки, лекции, мастер-классы, языковые курсы'
         }
     ];
     
+    // Инициализация карты
     let map;
-    let clusterer;
     let placemarks = [];
     
     function initMap() {
-        if (!window.ymaps) {
+        if (!ymaps) {
             console.error('Yandex Maps API не загружен');
+            showMapError();
             return;
         }
         
-        window.ymaps.ready(function() {
+        ymaps.ready(function() {
             // Создаем карту
-            map = new window.ymaps.Map('map', {
-                center: [55.7512, 37.6184], // Москва
-                zoom: 10,
+            map = new ymaps.Map('map', {
+                center: [55.751244, 37.618423], // Центр Москвы
+                zoom: 11,
                 controls: ['zoomControl', 'fullscreenControl', 'typeSelector']
             });
             
-            // Добавляем поиск по карте
-            map.controls.add('searchControl', {
-                noPlacemark: false,
-                size: 'large',
-                position: {top: 10, right: 10}
+            // Добавляем поиск
+            const searchControl = new ymaps.control.SearchControl({
+                options: {
+                    noPlacemark: true
+                }
             });
+            map.controls.add(searchControl);
             
             // Создаем кластеризатор
-            clusterer = new window.ymaps.Clusterer({
-                preset: 'islands#invertedVioletClusterIcons',
+            const clusterer = new ymaps.Clusterer({
+                preset: 'islands#invertedDarkOrangeClusterIcons',
                 clusterDisableClickZoom: true,
-                clusterOpenBalloonOnClick: true,
-                clusterBalloonContentLayout: 'cluster#balloonTwoColumns'
+                clusterOpenBalloonOnClick: true
             });
             
             // Добавляем метки
             updateMapMarkers();
             
-            // Сохраняем карту в глобальную переменную для доступа из других функций
-            window.map = {
-                instance: map,
-                updateFilters: updateMapMarkers,
-                geocode: performGeocode,
-                addPlacemark: addSearchPlacemark
-            };
+            // Обработчик поиска
+            document.getElementById('map-search-btn').addEventListener('click', searchOnMap);
+            document.getElementById('map-search').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') searchOnMap();
+            });
+            
+            // Обработчики фильтров
+            document.querySelectorAll('#map-filters input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateMapMarkers);
+            });
         });
+    }
+    
+    function showMapError() {
+        const mapContainer = document.getElementById('map-container');
+        if (mapContainer) {
+            mapContainer.innerHTML = `
+                <div class="alert alert-warning text-center p-5">
+                    <i class="bi bi-map display-4 mb-3"></i>
+                    <h4>Карта временно недоступна</h4>
+                    <p>Для отображения карты необходим API ключ Яндекс.Карт</p>
+                    <div class="mt-3">
+                        <h5>Доступные ресурсы:</h5>
+                        <ul class="text-start">
+                            <li>Институт Конфуция МГУ - Ленинские горы, д. 1</li>
+                            <li>Китайский культурный центр - ул. Правды, д. 1</li>
+                            <li>Библиотека иностранной литературы - ул. Николоямская, д. 1</li>
+                            <li>Языковой клуб "Восток" - ул. Арбат, д. 45</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
     }
     
     function updateMapMarkers() {
         // Получаем активные фильтры
         const activeFilters = {
-            education: document.getElementById('filter-education')?.checked || true,
-            libraries: document.getElementById('filter-libraries')?.checked || true,
-            centers: document.getElementById('filter-centers')?.checked || true,
-            cafes: document.getElementById('filter-cafes')?.checked || true
-        };
-        
-        // Типы ресурсов и их соответствие фильтрам
-        const typeFilterMap = {
-            'education': 'education',
-            'library': 'libraries',
-            'center': 'centers',
-            'cafe': 'cafes'
+            education: document.getElementById('filter-education').checked,
+            libraries: document.getElementById('filter-libraries').checked,
+            centers: document.getElementById('filter-centers').checked,
+            cafes: document.getElementById('filter-cafes').checked
         };
         
         // Фильтруем ресурсы
         const filteredResources = resources.filter(resource => {
-            const filterName = typeFilterMap[resource.type];
-            return activeFilters[filterName];
+            const typeMap = {
+                'education': 'education',
+                'library': 'libraries',
+                'center': 'centers',
+                'cafe': 'cafes'
+            };
+            return activeFilters[typeMap[resource.type]];
         });
         
         // Удаляем старые метки
-        if (clusterer && map) {
-            map.geoObjects.remove(clusterer);
+        if (map && map.geoObjects) {
+            map.geoObjects.removeAll();
         }
-        
         placemarks = [];
         
         // Добавляем новые метки
         filteredResources.forEach(resource => {
-            const placemark = createPlacemark(resource);
+            if (!ymaps) return;
+            
+            const placemark = new ymaps.Placemark(
+                resource.coordinates,
+                {
+                    balloonContentHeader: `<strong>${resource.name}</strong>`,
+                    balloonContentBody: `
+                        <p><strong>Адрес:</strong> ${resource.address}</p>
+                        <p><strong>Часы работы:</strong> ${resource.workingHours}</p>
+                        <p><strong>Контакты:</strong> ${resource.contact}</p>
+                        <p><strong>Описание:</strong> ${resource.description}</p>
+                        <p><strong>Услуги:</strong> ${resource.services}</p>
+                    `,
+                    balloonContentFooter: `<em>Тип: ${getResourceTypeName(resource.type)}</em>`,
+                    hintContent: resource.name
+                },
+                {
+                    preset: getPresetByType(resource.type),
+                    iconColor: getColorByType(resource.type)
+                }
+            );
+            
             placemarks.push(placemark);
+            if (map) {
+                map.geoObjects.add(placemark);
+            }
         });
-        
-        // Добавляем метки в кластеризатор
-        if (clusterer && map) {
-            clusterer.add(placemarks);
-            map.geoObjects.add(clusterer);
-        }
         
         // Если есть метки, подгоняем карту под них
         if (placemarks.length > 0 && map) {
-            const bounds = window.ymaps.util.bounds.fromPoints(placemarks.map(p => p.geometry.getCoordinates()));
-            map.setBounds(bounds, {
-                checkZoomRange: true,
-                zoomMargin: 50
-            });
+            const bounds = ymaps.util.bounds.getBounds(
+                placemarks.map(pm => pm.geometry.getCoordinates())
+            );
+            map.setBounds(bounds, {checkZoomRange: true});
         }
-    }
-    
-    function createPlacemark(resource) {
-        // Определяем иконку и цвет в зависимости от типа
-        const preset = getPresetByType(resource.type);
-        const iconColor = getColorByType(resource.type);
-        
-        // Создаем балун
-        const balloonContent = `
-            <div class="p-2">
-                <h5 class="fw-bold mb-2 text-primary">${resource.name}</h5>
-                <p class="mb-1"><strong>Тип:</strong> ${getResourceTypeName(resource.type)}</p>
-                <p class="mb-1"><strong>Адрес:</strong> ${resource.address}</p>
-                <p class="mb-1"><strong>Часы работы:</strong> ${resource.workingHours}</p>
-                <p class="mb-2"><strong>Описание:</strong> ${resource.description}</p>
-                <p class="mb-2"><strong>Услуги:</strong> ${resource.services}</p>
-                <div class="d-flex gap-2 mt-2">
-                    <button class="btn btn-sm btn-primary show-directions" data-coords="${resource.coordinates.join(',')}">
-                        <i class="bi bi-signpost-2 me-1"></i>Маршрут
-                    </button>
-                    <button class="btn btn-sm btn-outline-primary save-favorite">
-                        <i class="bi bi-bookmark me-1"></i>В избранное
-                    </button>
-                </div>
-            </div>
-        `;
-        
-        return new window.ymaps.Placemark(
-            resource.coordinates,
-            {
-                balloonContentHeader: `<strong>${resource.name}</strong>`,
-                balloonContentBody: balloonContent,
-                balloonContentFooter: `<small class="text-muted">Кликните для закрытия</small>`,
-                hintContent: resource.name,
-                name: resource.name,
-                type: resource.type
-            },
-            {
-                preset: preset,
-                iconColor: iconColor,
-                balloonPanelMaxMapArea: 0
-            }
-        );
-    }
-    
-    function getPresetByType(type) {
-        const presets = {
-            'education': 'islands#blueEducationCircleIcon',
-            'library': 'islands#blueLibraryIcon',
-            'center': 'islands#blueMuseumCircleIcon',
-            'cafe': 'islands#blueCafeCircleIcon'
-        };
-        return presets[type] || 'islands#blueStretchyIcon';
-    }
-    
-    function getColorByType(type) {
-        const colors = {
-            'education': '#0d6efd',      // Синий - образовательные учреждения
-            'library': '#198754',        // Зеленый - библиотеки
-            'center': '#6f42c1',         // Фиолетовый - культурные центры
-            'cafe': '#fd7e14'            // Оранжевый - кафе
-        };
-        return colors[type] || '#6c757d';
     }
     
     function getResourceTypeName(type) {
@@ -254,142 +216,92 @@ document.addEventListener('DOMContentLoaded', function() {
         return types[type] || 'Неизвестно';
     }
     
-    function performGeocode(query) {
-        if (!map || !window.ymaps) return;
+    function getPresetByType(type) {
+        const presets = {
+            'education': 'islands#blueEducationIcon',
+            'library': 'islands#blueLibraryIcon',
+            'center': 'islands#blueHomeIcon',
+            'cafe': 'islands#blueCafeIcon'
+        };
+        return presets[type] || 'islands#blueStretchyIcon';
+    }
+    
+    function getColorByType(type) {
+        const colors = {
+            'education': '#2A9D8F',
+            'library': '#264653',
+            'center': '#E9C46A',
+            'cafe': '#F4A261'
+        };
+        return colors[type] || '#6c757d';
+    }
+    
+    function searchOnMap() {
+        const query = document.getElementById('map-search').value.trim();
+        if (!query) return;
         
-        window.ymaps.geocode(query, {
-            results: 5
+        if (!ymaps) {
+            api.showNotification('Карта не загружена', 'warning');
+            return;
+        }
+        
+        // Используем геокодер Яндекса
+        ymaps.geocode(query, {
+            results: 10
         }).then(function(res) {
-            const geoObjects = res.geoObjects;
-            if (geoObjects.getLength() > 0) {
-                const firstObject = geoObjects.get(0);
-                
-                // Очищаем старые результаты поиска
-                clearSearchResults();
+            const firstGeoObject = res.geoObjects.get(0);
+            
+            if (firstGeoObject) {
+                // Удаляем старые поисковые метки
+                map.geoObjects.each(function(geoObject) {
+                    if (geoObject.properties.get('isSearchResult')) {
+                        map.geoObjects.remove(geoObject);
+                    }
+                });
                 
                 // Добавляем новую метку
-                addSearchPlacemark(firstObject);
+                const searchPlacemark = new ymaps.Placemark(
+                    firstGeoObject.geometry.getCoordinates(),
+                    {
+                        balloonContent: firstGeoObject.getAddressLine(),
+                        iconCaption: 'Результат поиска'
+                    },
+                    {
+                        preset: 'islands#redDotIcon',
+                        iconColor: '#DC3545'
+                    }
+                );
+                
+                searchPlacemark.properties.set('isSearchResult', true);
+                map.geoObjects.add(searchPlacemark);
                 
                 // Перемещаем карту к результату
-                map.setCenter(firstObject.geometry.getCoordinates(), 15);
+                map.setCenter(firstGeoObject.geometry.getCoordinates(), 15);
                 
                 // Открываем балун
-                firstObject.balloon.open();
+                searchPlacemark.balloon.open();
+                
+                api.showNotification('Местоположение найдено', 'success');
             } else {
-                api.showNotification('По вашему запросу ничего не найдено', 'warning');
+                api.showNotification('Местоположение не найдено', 'warning');
             }
         }).catch(function(error) {
             console.error('Geocoding error:', error);
-            api.showNotification('Ошибка при поиске на карте', 'danger');
+            api.showNotification('Ошибка поиска', 'danger');
         });
     }
     
-    function addSearchPlacemark(geoObject) {
-        if (!map || !window.ymaps) return;
-        
-        const coordinates = geoObject.geometry.getCoordinates();
-        const address = geoObject.getAddressLine();
-        
-        const placemark = new window.ymaps.Placemark(
-            coordinates,
-            {
-                balloonContent: `
-                    <div class="p-2">
-                        <h5 class="fw-bold mb-2 text-danger"><i class="bi bi-search me-1"></i>Результат поиска</h5>
-                        <p class="mb-1"><strong>Адрес:</strong> ${address}</p>
-                        <p class="mb-2">${geoObject.properties.get('description') || ''}</p>
-                        <button class="btn btn-sm btn-primary show-directions" data-coords="${coordinates.join(',')}">
-                            <i class="bi bi-signpost-2 me-1"></i>Маршрут
-                        </button>
-                    </div>
-                `,
-                hintContent: 'Результат поиска: ' + address,
-                isSearchResult: true
-            },
-            {
-                preset: 'islands#redDotIcon',
-                zIndex: 100
-            }
-        );
-        
-        // Добавляем метку на карту
-        map.geoObjects.add(placemark);
-        
-        // Сохраняем для последующего удаления
-        if (!window.searchPlacemarks) {
-            window.searchPlacemarks = [];
-        }
-        window.searchPlacemarks.push(placemark);
-        
-        return placemark;
-    }
-    
-    function clearSearchResults() {
-        if (window.searchPlacemarks && map) {
-            window.searchPlacemarks.forEach(placemark => {
-                map.geoObjects.remove(placemark);
-            });
-            window.searchPlacemarks = [];
-        }
-    }
-    
     // Запускаем инициализацию карты
-    if (typeof window.ymaps !== 'undefined') {
+    if (typeof ymaps !== 'undefined') {
         initMap();
     } else {
-        console.log('Ожидание загрузки Яндекс.Карт...');
-        
-        // Пытаемся инициализировать карту через 1 секунду
+        // Если Яндекс.Карты не загружены, показываем ошибку через 2 секунды
         setTimeout(() => {
-            if (typeof window.ymaps !== 'undefined') {
-                initMap();
+            if (typeof ymaps === 'undefined') {
+                showMapError();
             } else {
-                console.error('Yandex Maps API не загружен после ожидания');
-                document.getElementById('map-container').innerHTML = `
-                    <div class="alert alert-danger m-3">
-                        <i class="bi bi-exclamation-triangle me-2"></i>
-                        Ошибка загрузки карты. Пожалуйста, проверьте подключение к интернету и обновите страницу.
-                    </div>
-                `;
+                initMap();
             }
-        }, 1000);
+        }, 2000);
     }
-    
-    // Обработчики событий для кнопок в балунах
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('show-directions') || 
-            e.target.closest('.show-directions')) {
-            
-            e.preventDefault();
-            const button = e.target.classList.contains('show-directions') ? 
-                e.target : e.target.closest('.show-directions');
-            
-            const coords = button.getAttribute('data-coords').split(',').map(Number);
-            
-            if (map && window.ymaps) {
-                const multiRoute = new window.ymaps.multiRouter.MultiRoute({
-                    referencePoints: [
-                        map.getCenter(), // Текущее местоположение пользователя
-                        coords
-                    ],
-                    params: {
-                        results: 2
-                    }
-                }, {
-                    boundsAutoApply: true
-                });
-                
-                map.geoObjects.add(multiRoute);
-                
-                api.showNotification('Маршрут построен. Вы можете изменить начальную точку в настройках маршрута.', 'info');
-            }
-        }
-        
-        if (e.target.classList.contains('save-favorite') || 
-            e.target.closest('.save-favorite')) {
-            
-            e.preventDefault();
-            api.showNotification('Место добавлено в избранное!', 'success');
-        }
-    });
 });
