@@ -395,8 +395,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('trial-course-select').selectedIndex = 0;
         document.getElementById('trial-date-start').value = '';
         document.getElementById('trial-time-start').value = '';
-        document.getElementById('trial-persons').value = 1;
         document.getElementById('trial-duration').value = 1;
+        document.getElementById('trial-persons').value = 1;
         
         // Установка минимальной даты (завтра)
         const tomorrow = new Date();
@@ -407,6 +407,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const defaultDate = new Date();
         defaultDate.setDate(defaultDate.getDate() + 3);
         document.getElementById('trial-date-start').value = defaultDate.toISOString().split('T')[0];
+        
+        // Сброс отображения стоимости
+        document.getElementById('trial-lesson-price').textContent = '0 руб';
         
         modal.show();
     }
@@ -496,7 +499,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     updateTrialLessonDates(course);
                 }
             }
+            updateTrialLessonPrice(); // Обновляем стоимость
         });
+        
+        // Обработчик изменения продолжительности
+        document.getElementById('trial-duration').addEventListener('input', updateTrialLessonPrice);
+        
+        // Обработчик изменения количества студентов
+        document.getElementById('trial-persons').addEventListener('input', updateTrialLessonPrice);
         
         // Обработчик изменения даты для пробного урока
         document.getElementById('trial-date-start').addEventListener('change', function() {
@@ -564,6 +574,42 @@ document.addEventListener('DOMContentLoaded', function() {
             timeInput.disabled = true;
             timeInput.value = '';
         }
+    }
+    
+    // Функция для расчета стоимости пробного урока (скидка 50%)
+    function calculateTrialLessonPrice(course, duration, persons) {
+        // Базовая стоимость за час
+        const courseFeePerHour = course.course_fee_per_hour;
+        
+        // Рассчитываем базовую стоимость без скидок
+        let basePrice = courseFeePerHour * duration * persons;
+        
+        // Применяем скидку 50% на пробный урок
+        let discountedPrice = basePrice * 0.5;
+        
+        // Округляем до целых рублей
+        return Math.round(discountedPrice);
+    }
+    
+    // Функция для обновления стоимости пробного урока
+    function updateTrialLessonPrice() {
+        const courseId = parseInt(document.getElementById('trial-course-select').value);
+        const duration = parseInt(document.getElementById('trial-duration').value) || 1;
+        const persons = parseInt(document.getElementById('trial-persons').value) || 1;
+        
+        if (!courseId) {
+            document.getElementById('trial-lesson-price').textContent = '0 руб';
+            return;
+        }
+        
+        const course = allCourses.find(c => c.id === courseId);
+        if (!course) {
+            document.getElementById('trial-lesson-price').textContent = '0 руб';
+            return;
+        }
+        
+        const price = calculateTrialLessonPrice(course, duration, persons);
+        document.getElementById('trial-lesson-price').textContent = price + ' руб';
     }
     
     function calculateTotalPrice(course) {
@@ -778,21 +824,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const time = document.getElementById('trial-time-start').value;
             const duration = parseInt(document.getElementById('trial-duration').value) || 1;
             const persons = parseInt(document.getElementById('trial-persons').value) || 1;
-            
+
             if (!courseId || !date || !time) {
                 api.showNotification('Заполните все обязательные поля', 'warning');
                 return;
             }
-            
+
             const course = allCourses.find(c => c.id === courseId);
             if (!course) {
                 api.showNotification('Курс не найден', 'danger');
                 return;
             }
-            
-            // Для пробного урока делаем фиксированную цену 0 или скидку 100%
-            const totalPrice = 0; // Бесплатный пробный урок
-            
+
+            // Рассчитываем стоимость с учетом скидки 50% на пробный урок
+            let totalPrice = calculateTrialLessonPrice(course, duration, persons);
+
             const orderData = {
                 course_id: courseId,
                 tutor_id: 0,
@@ -811,15 +857,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 interactive: false,
                 trial_lesson: true // Добавляем метку, что это пробный урок
             };
-            
+
             const result = await api.createOrder(orderData);
-            
+
             bootstrap.Modal.getInstance(document.getElementById('trialLessonModal')).hide();
-            
-            api.showNotification('Заявка на пробный урок успешно отправлена!', 'success');
-            
+
+            api.showNotification(`Заявка на пробный урок успешно отправлена! Стоимость со скидкой 50%: ${totalPrice} руб`, 'success');
+
             document.getElementById('trial-lesson-form').reset();
-            
+
         } catch (error) {
             console.error('Error submitting trial lesson:', error);
             api.showNotification('Ошибка при отправке заявки: ' + error.message, 'danger');
