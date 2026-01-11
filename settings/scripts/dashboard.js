@@ -5,20 +5,22 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentOrderPage = 1;
     const ordersPerPage = 5;
     
-    // Инициализация
+    function getInitials(name) {
+        if (!name) return '??';
+        const parts = name.split(' ');
+        if (parts.length >= 2) {
+            return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+        }
+        return name.substring(0, 2).toUpperCase();
+    }
+    
     init();
     
     async function init() {
         try {
-            // Загрузка заказов
             await loadOrders();
-            
-            // Загрузка курсов и репетиторов для отображения названий
             await loadCoursesAndTutors();
-            
-            // Настройка обработчиков событий
             setupEventListeners();
-            
             api.showNotification('Добро пожаловать в личный кабинет!', 'info');
             
         } catch (error) {
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 api.fetchCourses(),
                 api.fetchTutors()
             ]);
-            renderOrders(); // Перерисовываем заказы с названиями
+            renderOrders();
         } catch (error) {
             console.error('Error loading courses and tutors:', error);
         }
@@ -52,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const tbody = document.getElementById('orders-body');
         if (!tbody) return;
         
-        // Удаляем строку загрузки
         const loadingRow = document.getElementById('loading-row');
         if (loadingRow) {
             loadingRow.remove();
@@ -91,24 +92,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const row = document.createElement('tr');
         const globalIndex = (currentOrderPage - 1) * ordersPerPage + index + 1;
         
-        // Получаем название курса или репетитора
         let itemName = 'Неизвестно';
         let itemType = '';
+        let initials = '??';
+        
         if (order.course_id > 0 && allCourses.length > 0) {
             const course = allCourses.find(c => c.id === order.course_id);
             if (course) {
                 itemName = course.name;
                 itemType = 'Курс';
+                initials = getInitials(course.teacher);
             }
         } else if (order.tutor_id > 0 && allTutors.length > 0) {
             const tutor = allTutors.find(t => t.id === order.tutor_id);
             if (tutor) {
                 itemName = tutor.name;
                 itemType = 'Репетитор';
+                initials = getInitials(tutor.name);
             }
         }
         
-        // Определяем статус
         const statusDate = new Date(order.date_start);
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -129,7 +132,13 @@ document.addEventListener('DOMContentLoaded', function() {
         row.innerHTML = `
             <td>${globalIndex}</td>
             <td>
-                <strong>${itemType}:</strong> ${itemName}
+                <div class="d-flex align-items-center">
+                    <div class="teacher-initials-small me-2">${initials}</div>
+                    <div>
+                        <div><strong>${itemType}:</strong> ${itemName}</div>
+                        <small class="text-muted">ID заказа: ${order.id}</small>
+                    </div>
+                </div>
             </td>
             <td>${api.formatDate(order.date_start)}</td>
             <td>${api.formatTime(order.time_start)}</td>
@@ -151,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </td>
         `;
         
-        // Добавляем обработчики для кнопок
         row.querySelector('.details-btn').addEventListener('click', () => showOrderDetails(order));
         row.querySelector('.edit-btn').addEventListener('click', () => openEditModal(order));
         row.querySelector('.delete-btn').addEventListener('click', () => openDeleteModal(order));
@@ -198,7 +206,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         pagination.innerHTML = paginationHTML;
         
-        // Добавляем обработчики для пагинации
         pagination.querySelectorAll('.page-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -224,7 +231,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function showOrderDetails(order) {
         const detailsContainer = document.getElementById('order-details');
         
-        // Находим связанный курс или репетитора
         let itemInfo = {};
         let itemType = '';
         if (order.course_id > 0) {
@@ -250,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     type: 'Репетитор',
                     name: tutor.name,
                     work_experience: tutor.work_experience,
-                    languages_spoken: tutor.languages_spoken.join(', '),
                     languages_offered: tutor.languages_offered.join(', '),
                     language_level: tutor.language_level,
                     price_per_hour: tutor.price_per_hour
@@ -258,7 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Рассчитываем скидки/надбавки
         let discountInfo = [];
         if (order.early_registration) discountInfo.push('Скидка за раннюю регистрацию: 10%');
         if (order.group_enrollment) discountInfo.push('Скидка за групповую запись: 15%');
@@ -269,7 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (order.assessment) discountInfo.push('Оценка уровня: +300 руб');
         if (order.interactive) discountInfo.push('Интерактивная платформа: +50%');
         
-        // Форматируем дату создания
         const createdAt = new Date(order.created_at);
         const formattedDate = createdAt.toLocaleDateString('ru-RU', {
             day: '2-digit',
@@ -367,20 +370,44 @@ document.addEventListener('DOMContentLoaded', function() {
             ` : ''}
         `;
         
-        // Показываем модальное окно
         const modal = new bootstrap.Modal(document.getElementById('detailsModal'));
         modal.show();
     }
     
     function openEditModal(order) {
-        // Заполняем форму данными заявки
         document.getElementById('edit-order-id').value = order.id;
         document.getElementById('edit-date-start').value = order.date_start;
         document.getElementById('edit-time-start').value = order.time_start;
         document.getElementById('edit-persons').value = order.persons;
         document.getElementById('edit-duration').value = order.duration;
         
-        // Показываем модальное окно
+        // Для курсов блокируем изменение продолжительности
+        const durationInput = document.getElementById('edit-duration');
+        if (order.course_id > 0) {
+            durationInput.readOnly = true;
+            durationInput.title = "Продолжительность курса фиксирована и не может быть изменена";
+            durationInput.style.backgroundColor = '#f8f9fa';
+        } else {
+            durationInput.readOnly = false;
+            durationInput.title = "";
+            durationInput.style.backgroundColor = '';
+        }
+
+        // Добавляем все данные заявки в data-атрибуты
+        const editForm = document.getElementById('edit-order-form');
+        editForm.dataset.originalData = JSON.stringify({
+            early_registration: order.early_registration,
+            group_enrollment: order.group_enrollment,
+            intensive_course: order.intensive_course,
+            supplementary: order.supplementary,
+            personalized: order.personalized,
+            excursions: order.excursions,
+            assessment: order.assessment,
+            interactive: order.interactive,
+            course_id: order.course_id,
+            tutor_id: order.tutor_id
+        });
+
         const modal = new bootstrap.Modal(document.getElementById('editModal'));
         modal.show();
     }
@@ -393,61 +420,85 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function setupEventListeners() {
-        // Обработчик сохранения изменений
         document.getElementById('save-edit').addEventListener('click', async () => {
             try {
                 const orderId = document.getElementById('edit-order-id').value;
+                const order = allOrders.find(o => o.id == orderId);
+                if (!order) {
+                    api.showNotification('Заявка не найдена', 'warning');
+                    return;
+                }
+
                 const dateStart = document.getElementById('edit-date-start').value;
                 const timeStart = document.getElementById('edit-time-start').value;
                 const persons = parseInt(document.getElementById('edit-persons').value);
                 const duration = parseInt(document.getElementById('edit-duration').value);
-                
+
                 if (!dateStart || !timeStart || !persons || !duration) {
                     api.showNotification('Заполните все поля', 'warning');
                     return;
                 }
-                
-                // Собираем обновленные данные
+
+                // Получаем объект курса или репетитора для пересчета стоимости
+                let item = null;
+                let itemType = '';
+                let basePricePerHour = 0;
+
+                if (order.course_id > 0) {
+                    item = allCourses.find(c => c.id === order.course_id);
+                    itemType = 'course';
+                    if (item) {
+                        basePricePerHour = item.course_fee_per_hour;
+                    }
+                } else if (order.tutor_id > 0) {
+                    item = allTutors.find(t => t.id === order.tutor_id);
+                    itemType = 'tutor';
+                    if (item) {
+                        basePricePerHour = item.price_per_hour;
+                    }
+                }
+
+                if (!item) {
+                    api.showNotification('Курс или репетитор не найден', 'warning');
+                    return;
+                }
+
+                // Пересчитываем стоимость
+                let newPrice = calculateUpdatedPrice(item, itemType, dateStart, timeStart, duration, persons, order);
+
                 const updateData = {
                     date_start: dateStart,
                     time_start: timeStart,
                     persons: persons,
-                    duration: duration
+                    duration: duration,
+                    price: newPrice
                 };
-                
-                // Отправляем запрос на обновление
+
                 await api.updateOrder(orderId, updateData);
-                
-                // Закрываем модальное окно
+
                 bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
-                
-                // Показываем уведомление
+
                 api.showNotification('Заявка успешно обновлена!', 'success');
-                
-                // Обновляем список заявок
+
+                // Перезагружаем данные
                 await loadOrders();
-                
+
             } catch (error) {
                 console.error('Error updating order:', error);
-                api.showNotification('Ошибка при обновлении заявки', 'danger');
+                api.showNotification('Ошибка при обновлении заявки: ' + error.message, 'danger');
             }
         });
         
-        // Обработчик удаления
         document.getElementById('confirm-delete').addEventListener('click', async () => {
             try {
                 const orderId = document.getElementById('delete-order-id').value;
                 
-                // Отправляем запрос на удаление
                 await api.deleteOrder(orderId);
                 
-                // Закрываем модальное окно
                 bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
                 
-                // Показываем уведомление
                 api.showNotification('Заявка успешно удалена!', 'success');
                 
-                // Обновляем список заявок
                 await loadOrders();
                 
             } catch (error) {
@@ -455,5 +506,83 @@ document.addEventListener('DOMContentLoaded', function() {
                 api.showNotification('Ошибка при удалении заявки', 'danger');
             }
         });
+    }
+    
+    // Функция для пересчета стоимости при редактировании
+    function calculateUpdatedPrice(item, itemType, dateStart, timeStart, duration, persons, originalOrder) {
+        let basePrice = 0;
+        
+        if (itemType === 'course') {
+            // Для курса: базовая стоимость за час × количество часов
+            basePrice = item.course_fee_per_hour * duration;
+            
+            // Учитываем выходные/праздники
+            let isWeekendOrHoliday = 1;
+            const date = new Date(dateStart);
+            const dayOfWeek = date.getDay();
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+                isWeekendOrHoliday = 1.5;
+            }
+            
+            // Учитываем время суток
+            let timeSurcharge = 0;
+            if (timeStart) {
+                const hour = parseInt(timeStart.split(':')[0]);
+                if (hour >= 9 && hour < 12) {
+                    timeSurcharge = 400;
+                } else if (hour >= 18 && hour < 20) {
+                    timeSurcharge = 1000;
+                }
+            }
+            
+            // Базовая стоимость с учетом времени и выходных
+            basePrice = (basePrice * isWeekendOrHoliday) + timeSurcharge;
+            
+        } else if (itemType === 'tutor') {
+            // Для репетитора: ставка за час × продолжительность
+            basePrice = item.price_per_hour * duration;
+        }
+        
+        // Умножаем на количество студентов
+        let totalPrice = basePrice * persons;
+        
+        // Применяем скидки и надбавки из оригинальной заявки
+        if (originalOrder.early_registration) {
+            totalPrice *= 0.9; // 10% скидка
+        }
+        
+        if (originalOrder.group_enrollment) {
+            totalPrice *= 0.85; // 15% скидка
+        }
+        
+        if (originalOrder.intensive_course) {
+            totalPrice *= 1.2; // 20% наценка
+        }
+        
+        if (originalOrder.supplementary) {
+            totalPrice += 2000 * persons; // Доп. материалы
+        }
+        
+        if (originalOrder.personalized) {
+            // Индивидуальные занятия: +1500 руб/неделя
+            if (itemType === 'course') {
+                const weeks = duration / (item.week_length || 1);
+                totalPrice += 1500 * weeks;
+            }
+        }
+        
+        if (originalOrder.excursions) {
+            totalPrice *= 1.25; // +25%
+        }
+        
+        if (originalOrder.assessment) {
+            totalPrice += 300; // Оценка уровня
+        }
+        
+        if (originalOrder.interactive) {
+            totalPrice *= 1.5; // +50%
+        }
+        
+        return Math.round(totalPrice);
     }
 });
