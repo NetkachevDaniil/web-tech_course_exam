@@ -1,4 +1,4 @@
-// js/api.js
+// API конфигурация
 const API_KEY = '3926b07f-7ce7-4d7b-a716-3f472e11282f';
 const API_BASE_URL = 'http://exam-api-courses.std-900.ist.mospolytech.ru';
 
@@ -21,11 +21,8 @@ async function makeApiRequest(endpoint, method = 'GET', data = null) {
         const response = await fetch(url, options);
         
         if (!response.ok) {
-            const errorData = await response.json().catch(() => null);
-            if (errorData && errorData.error) {
-                throw new Error(errorData.error);
-            }
-            throw new Error(`HTTP error! status: ${response.status}`);
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.error || 'Unknown error'}`);
         }
         
         return await response.json();
@@ -78,8 +75,15 @@ async function fetchOrderById(orderId) {
 // Функция для отображения уведомлений
 function showNotification(message, type = 'info') {
     const notificationArea = document.getElementById('notification-area');
-    if (!notificationArea) return;
+    if (!notificationArea) {
+        // Создаем область уведомлений, если её нет
+        const newNotificationArea = document.createElement('div');
+        newNotificationArea.id = 'notification-area';
+        newNotificationArea.className = 'container mt-5 pt-5';
+        document.body.insertBefore(newNotificationArea, document.body.firstChild);
+    }
     
+    const finalNotificationArea = document.getElementById('notification-area');
     const alertDiv = document.createElement('div');
     alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
     alertDiv.role = 'alert';
@@ -88,36 +92,21 @@ function showNotification(message, type = 'info') {
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
     
-    // Анимация появления
-    alertDiv.style.opacity = '0';
-    alertDiv.style.transform = 'translateY(20px)';
-    
-    notificationArea.appendChild(alertDiv);
-    
-    // Анимация появления
-    setTimeout(() => {
-        alertDiv.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        alertDiv.style.opacity = '1';
-        alertDiv.style.transform = 'translateY(0)';
-    }, 10);
+    finalNotificationArea.appendChild(alertDiv);
     
     // Автоматическое скрытие через 5 секунд
     setTimeout(() => {
         if (alertDiv.parentNode) {
-            alertDiv.style.opacity = '0';
-            alertDiv.style.transform = 'translateY(-20px)';
-            setTimeout(() => alertDiv.remove(), 300);
+            const bsAlert = new bootstrap.Alert(alertDiv);
+            bsAlert.close();
         }
     }, 5000);
 }
 
 // Функция для форматирования даты
 function formatDate(dateString) {
-    if (!dateString) return '';
-    
+    if (!dateString) return 'Не указана';
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return dateString;
-    
     return date.toLocaleDateString('ru-RU', {
         day: '2-digit',
         month: '2-digit',
@@ -127,10 +116,8 @@ function formatDate(dateString) {
 
 // Функция для форматирования времени
 function formatTime(timeString) {
-    if (!timeString) return '';
-    
-    const [hours, minutes] = timeString.split(':');
-    return `${hours}:${minutes}`;
+    if (!timeString) return 'Не указано';
+    return timeString.substring(0, 5);
 }
 
 // Функция для пагинации
@@ -138,6 +125,14 @@ function paginate(items, pageNumber, itemsPerPage = 5) {
     const startIndex = (pageNumber - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return items.slice(startIndex, endIndex);
+}
+
+// Функция для расчета даты окончания курса
+function calculateEndDate(startDate, weeks) {
+    if (!startDate || !weeks) return null;
+    const date = new Date(startDate);
+    date.setDate(date.getDate() + (weeks * 7));
+    return date;
 }
 
 // Экспорт функций
@@ -155,7 +150,7 @@ window.api = {
     formatDate,
     formatTime,
     paginate,
+    calculateEndDate,
     API_KEY,
-    API_BASE_URL,
-    makeApiRequest
+    API_BASE_URL
 };
