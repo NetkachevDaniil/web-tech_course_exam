@@ -76,7 +76,6 @@ async function fetchOrderById(orderId) {
 function showNotification(message, type = 'info') {
     const notificationArea = document.getElementById('notification-area');
     if (!notificationArea) {
-        // Создаем область уведомлений, если её нет
         const newNotificationArea = document.createElement('div');
         newNotificationArea.id = 'notification-area';
         newNotificationArea.className = 'container mt-5 pt-5';
@@ -94,7 +93,6 @@ function showNotification(message, type = 'info') {
     
     finalNotificationArea.appendChild(alertDiv);
     
-    // Автоматическое скрытие через 5 секунд
     setTimeout(() => {
         if (alertDiv.parentNode) {
             const bsAlert = new bootstrap.Alert(alertDiv);
@@ -121,18 +119,10 @@ function formatTime(timeString) {
 }
 
 // Функция для пагинации
-function paginate(items, pageNumber, itemsPerPage = 5) {
+function paginate(items, pageNumber, itemsPerPage = 6) {
     const startIndex = (pageNumber - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return items.slice(startIndex, endIndex);
-}
-
-// Функция для расчета даты окончания курса
-function calculateEndDate(startDate, weeks) {
-    if (!startDate || !weeks) return null;
-    const date = new Date(startDate);
-    date.setDate(date.getDate() + (weeks * 7));
-    return date;
 }
 
 // Экспорт функций
@@ -150,7 +140,6 @@ window.api = {
     formatDate,
     formatTime,
     paginate,
-    calculateEndDate,
     API_KEY,
     API_BASE_URL
 };
