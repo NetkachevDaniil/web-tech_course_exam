@@ -600,9 +600,14 @@
                         <label class="form-label">Количество студентов</label>
                         <input type="number" class="form-control" id="trial-persons" min="1" max="20" value="1" required>
                     </div>
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle me-2"></i>
-                        Пробный урок проводится бесплатно!
+                    <div class="mb-3">
+                        <label class="form-label">Стоимость пробного урока</label>
+                        <div class="alert alert-info">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-percent me-1"></i>Скидка 50% на пробный урок</span>
+                                <span class="fs-5 fw-bold text-primary" id="trial-lesson-price">0 руб</span>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
