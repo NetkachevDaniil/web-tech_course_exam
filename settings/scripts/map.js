@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     resource = languageResources.find(r => r.name.includes('Британский'));
                 } else if (title.includes('Гёте-Институт')) {
                     resource = languageResources.find(r => r.name.includes('Гёте'));
-                } else if (title.includes('Café Español')) {
+                } else if (title.includes('Esp Club Moscú')) {
                     resource = languageResources.find(r => r.name.includes('Esp Club'));
                 }
                 
