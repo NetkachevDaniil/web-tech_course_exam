@@ -1,0 +1,380 @@
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --purple-color: #6f42c1;
+    --light-bg: #f8f9fa;
+    --dark-bg: #212529;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Градиентные цвета */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+}
+
+.bg-gradient-hero {
+    background: linear-gradient(135deg, #1a3a6c 0%, #0d2a5c 100%);
+}
+
+.bg-gradient-light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Текстовые цвета */
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.text-purple {
+    color: var(--purple-color);
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.hover-lift {
+    transition: var(--transition);
+    will-change: transform;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow);
+}
+
+.hover-opacity-100 {
+    transition: opacity 0.3s ease;
+}
+
+.hover-opacity-100:hover {
+    opacity: 1 !important;
+}
+
+/* Уведомления */
+#notification-area {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 1050;
+    max-width: 350px;
+}
+
+#notification-area .alert {
+    animation: fadeInUp 0.3s ease, fadeOut 0.3s ease 4.7s;
+    animation-fill-mode: forwards;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 1rem 1.5rem;
+}
+
+/* Пагинация */
+.pagination .page-link {
+    color: var(--primary-color);
+    border-radius: 5px;
+    margin: 0 2px;
+    transition: var(--transition);
+}
+
+.pagination .page-link:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 4px rgba(13, 110, 253, 0.3);
+}
+
+/* Таблицы */
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+    cursor: pointer;
+}
+
+.table-primary {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+}
+
+/* Выделение выбранного репетитора */
+.selected-tutor {
+    background-color: rgba(13, 110, 253, 0.15) !important;
+    border-left: 4px solid var(--primary-color) !important;
+    position: relative;
+}
+
+.selected-tutor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background-color: var(--primary-color);
+}
+
+/* Модальные окна */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Кнопки */
+.btn {
+    transition: var(--transition);
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(13, 110, 253, 0.4);
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+.btn-info {
+    background-color: var(--info-color);
+    border-color: var(--info-color);
+}
+
+.btn-info:hover {
+    background-color: #0bacd6;
+    border-color: #0bacd6;
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e6a800;
+    border-color: #e6a800;
+    color: #212529;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.btn-light {
+    background-color: white;
+    border-color: #e9ecef;
+    color: #212529;
+}
+
+.btn-light:hover {
+    background-color: #f8f9fa;
+    border-color: #dde0e3;
+}
+
+/* Карточки */
+.card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
+/* Формы */
+.form-control, .form-select {
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Футер */
+footer {
+    margin-top: auto;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body {
+        padding-top: 56px;
+    }
+    
+    .navbar-brand span {
+        font-size: 1.1rem;
+    }
+    
+    h1.display-4, h1.display-5 {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem !important;
+    }
+    
+    .modal-dialog {
+        margin: 1rem;
+        max-width: 95%;
+    }
+    
+    #map-container {
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav {
+        margin-top: 10px;
+    }
+    
+    .btn-lg {
+        padding: 0.4rem 1rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .card-title.h4 {
+        font-size: 1.2rem !important;
+    }
+}
+
+/* Стили для карты */
+#map-container {
+    position: relative;
+    overflow: hidden;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Анимация загрузки */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.3em;
+}
+
+/* Стили для скидок/наценок */
+.discount-badge {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 0.25rem;
+}
+
+.badge-discount {
+    background-color: rgba(25, 135, 84, 0.2);
+    color: var(--success-color);
+}
+
+.badge-surcharge {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: var(--danger-color);
+}
+
+/* Прокрутка */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
+}
+
+/* Анимация для элементов при прокрутке */
+.scroll-animation {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-animation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
