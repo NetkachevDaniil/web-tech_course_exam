@@ -1,1 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - MandarinMastery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="icon" href="./static/img/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="./static/img/logo.png" alt="MandarinMastery Logo" height="40" class="me-2 rounded-circle">
+                <span class="fw-bold">MandarinMastery</span>
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">Личный кабинет</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Область уведомлений -->
+    <div id="notification-area" class="container mt-5 pt-5"></div>
+
+    <!-- Основной контент -->
+    <main class="container py-5 mt-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-5 fw-bold text-primary">Мой личный кабинет</h1>
+                <p class="lead text-secondary">Управление вашими заявками на курсы и занятия с репетиторами</p>
+            </div>
+        </div>
+
+        <!-- Таблица заказов -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-primary text-white py-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="card-title mb-0 fw-bold">Мои заявки</h3>
+                            <span class="badge bg-light text-primary fs-6" id="total-orders-count">0 заявок</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>№</th>
+                                        <th>Название курса/репетитора</th>
+                                        <th>Дата занятия</th>
+                                        <th>Время</th>
+                                        <th>Студентов</th>
+                                        <th>Стоимость</th>
+                                        <th>Статус</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orders-body">
+                                    <tr id="loading-row">
+                                        <td colspan="8" class="text-center py-5">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Загрузка...</span>
+                                            </div>
+                                            <p class="mt-3 text-muted">Загрузка данных...</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <nav id="orders-pagination" class="mt-4 d-flex justify-content-center">
+                            <!-- Пагинация будет сгенерирована через JavaScript -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3 fw-bold">MandarinMastery</h5>
+                    <p>Ваш путь к мастерству китайского языка начинается здесь.</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3 fw-bold">Контакты</h5>
+                    <p><i class="bi bi-envelope me-2"></i> info@mandarinmastery.ru</p>
+                    <p><i class="bi bi-telephone me-2"></i> +7 (495) 123-45-67</p>
+                    <p><i class="bi bi-geo-alt me-2"></i> Москва, ул. Ленинская, 42</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3 fw-bold">Социальные сети</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white opacity-75 hover-opacity-100"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="text-white opacity-75 hover-opacity-100"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="text-white opacity-75 hover-opacity-100"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-white opacity-75 hover-opacity-100"><i class="bi bi-youtube fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light my-4">
+            <div class="text-center pt-3">
+                <p class="mb-0">&copy; 2026 MandarinMastery. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно подробной информации -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title"><i class="bi bi-info-circle me-2"></i>Подробная информация о заявке</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3" id="order-details">
+                        <!-- Детали заказа будут загружены через JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно редактирования -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title"><i class="bi bi-pencil-square me-2"></i>Редактирование заявки</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-order-form">
+                        <input type="hidden" id="edit-order-id">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Дата начала</label>
+                            <input type="date" class="form-control" id="edit-date-start" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Время начала</label>
+                            <input type="time" class="form-control" id="edit-time-start" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Количество студентов</label>
+                            <input type="number" class="form-control" id="edit-persons" min="1" max="20" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Продолжительность (часов)</label>
+                            <input type="number" class="form-control" id="edit-duration" min="1" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-warning" id="save-edit">
+                        <i class="bi bi-save me-2"></i>Сохранить изменения
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения удаления -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-trash me-2"></i>Подтверждение удаления</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="fw-bold">Вы уверены, что хотите удалить заявку?</p>
+                    <p class="text-muted small">Это действие нельзя будет отменить. Все данные заявки будут безвозвратно удалены.</p>
+                    <input type="hidden" id="delete-order-id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет, отменить</button>
+                    <button type="button" class="btn btn-danger" id="confirm-delete">
+                        <i class="bi bi-check-circle me-2"></i>Да, удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./static/scripts/api.js"></script>
+    <script src="./static/scripts/dashboard.js"></script>
+</body>
+</html>
