@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Chinese - Изучение китайского языка</title>
+    <title>Polyglot School - Школа иностранных языков</title>
     
     <!-- Bootstrap 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./settings/css/style.css">
     
     <!-- Favicon -->
-    <link rel="icon" href="./settings/img/logo.svg" type="image/svg+xml">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <i class="bi bi-translate fs-3 me-2"></i>
-                <span class="fw-bold">Learn Chinese</span>
+                <span class="fw-bold">Polyglot School</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -32,25 +32,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Главная</a>
+                        <a class="nav-link" href="#about">О школе</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#courses">Курсы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tutors">Репетиторы</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">О нас</a>
+                        <a class="nav-link" href="#contact">Контакты</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.html">Личный кабинет</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#map">Карта ресурсов</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Контакты</a>
                     </li>
                 </ul>
             </div>
@@ -60,18 +51,22 @@
     <!-- Область уведомлений -->
     <div id="notification-area" class="container mt-5 pt-5"></div>
 
-    <!-- Hero секция -->
-    <header class="hero-section py-5 mt-5">
+    <header id="hero" class="hero-section py-5 mt-5">
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-3">Откройте для себя мир китайского языка!</h1>
-                    <p class="lead mb-4">Присоединяйтесь к нашей школе и начните изучать один из самых древних и богатых языков мира. Наши курсы подходят для любого уровня подготовки.</p>
-                    <a href="#courses" class="btn btn-lg px-4">Начать обучение</a>
+                <div class="col-lg-6 hero-content">
+                    <h1 class="display-4 fw-bold mb-3">Изучайте иностранные языки с нами!</h1>
+                    <p class="lead mb-4">Polyglot School - ваша дверь в мир международного общения. Мы предлагаем курсы по 8 иностранным языкам с профессиональными преподавателями.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#courses" class="btn btn-lg px-4">Выбрать курс</a>
+                        <a href="#tutors" class="btn btn-lg px-4 btn-outline">Найти репетитора</a>
+                    </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-image">
-                        <i class="bi bi-chat-square-quote display-1"></i>
+                        <img src="https://static.tildacdn.com/tild3938-6462-4639-b662-313665326232/smiling-girl-with-fl.jpg" 
+                             alt="Преподаватель английского языка на занятии" 
+                             class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -79,68 +74,41 @@
     </header>
 
     <!-- О школе -->
-    <section id="about" class="py-5">
+    <section id="about" class="py-5 section-spacing">
         <div class="container">
-            <h2 class="text-center mb-5 section-title">О нашей языковой школе</h2>
+            <h2 class="text-center mb-5 section-title">О нашей школе</h2>
             <div class="row">
-                <div class="col-lg-8 mx-auto">
+                <div class="col-lg-10 mx-auto">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <h3 class="card-title h4 mb-3">Наша миссия</h3>
-                            <p class="card-text">Мы предоставляем качественное образование всем, кто интересуется изучением китайского языка. Наша школа предлагает разнообразные курсы для всех уровней владения языком - от начинающих до продвинутых.</p>
-                            <p class="card-text">Наша цель - не только научить вас языку, но и познакомить с богатой китайской культурой, историей и традициями.</p>
-                            <div class="mt-4">
-                                <h4 class="h5 mb-3">Что мы предлагаем:</h4>
-                                <ul class="list-unstyled">
-                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Сертифицированные преподаватели</li>
-                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Интерактивные занятия</li>
-                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Гибкий график обучения</li>
-                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Современные методики обучения</li>
-                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Подготовка к экзаменам HSK</li>
-                                </ul>
+                            <h3 class="card-title h4 mb-3">Polyglot School - школа международных языков</h3>
+                            <p class="card-text">Мы - современная языковая школа, специализирующаяся на преподавании 8 самых востребованных языков мира. Наша миссия - сделать изучение языков доступным, эффективным и увлекательным для всех.</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h4 class="h5 mb-3">Наши преимущества:</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>8 языков на выбор</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Носители языка и русскоязычные преподаватели</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Современные методики обучения</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Онлайн и оффлайн форматы</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Подготовка к международным экзаменам</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="h5 mb-3">Наши языки:</h4>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="badge language-badge">Английский</span>
+                                        <span class="badge language-badge">Испанский</span>
+                                        <span class="badge language-badge">Французский</span>
+					<span class="badge language-badge">Японский</span>
+                                        <span class="badge language-badge">Немецкий</span>
+                                        <span class="badge language-badge">Итальянский</span>
+                                        <span class="badge language-badge">Китайский</span>
+                                        <span class="badge language-badge">Русский</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Преимущества изучения китайского -->
-    <section class="py-5 benefits-section">
-        <div class="container">
-            <h2 class="text-center mb-5 section-title">Преимущества изучения китайского</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                                <i class="bi bi-globe-asia-australia display-5"></i>
-                            </div>
-                            <h3 class="card-title h5">Международный язык</h3>
-                            <p class="card-text">Китайский язык является одним из самых распространенных языков в мире и официальным языком КНР, Тайваня и Сингапура.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                                <i class="bi bi-bank display-5"></i>
-                            </div>
-                            <h3 class="card-title h5">Богатая культура</h3>
-                            <p class="card-text">Погрузитесь в мир китайской литературы, искусства и философии. Понимайте произведения Конфуция и Лао-цзы в оригинале.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                                <i class="bi bi-briefcase display-5"></i>
-                            </div>
-                            <h3 class="card-title h5">Карьерные возможности</h3>
-                            <p class="card-text">Откройте новые возможности в международном бизнесе, дипломатии, науке и туризме со знанием китайского языка.</p>
                         </div>
                     </div>
                 </div>
@@ -149,7 +117,7 @@
     </section>
 
     <!-- Курсы -->
-    <section id="courses" class="py-5">
+    <section id="courses" class="py-5 benefits-section section-spacing">
         <div class="container">
             <h2 class="text-center mb-5 section-title">Наши курсы</h2>
             
@@ -181,7 +149,7 @@
             </div>
 
             <!-- Контейнер для курсов -->
-            <div id="courses-container" class="row g-4">
+            <div id="courses-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <!-- Курсы будут загружены через JavaScript -->
                 <div class="col-12 text-center py-5">
                     <div class="spinner-border text-primary" role="status">
@@ -198,7 +166,7 @@
     </section>
 
     <!-- Репетиторы -->
-    <section id="tutors" class="py-5 tutors-section">
+    <section id="tutors" class="py-5 tutors-section section-spacing">
         <div class="container">
             <h2 class="text-center mb-5 section-title">Наши репетиторы</h2>
             
@@ -240,14 +208,13 @@
                             <th>Имя репетитора</th>
                             <th>Уровень языка</th>
                             <th>Языки преподавания</th>
-                            <th>Опыт (лет)</th>
                             <th>Ставка (руб./час)</th>
                             <th>Действия</th>
                         </tr>
                     </thead>
                     <tbody id="tutors-body">
                         <tr>
-                            <td colspan="6" class="text-center py-5">
+                            <td colspan="5" class="text-center py-5">
                                 <div class="spinner-border text-primary" role="status">
                                     <span class="visually-hidden">Загрузка...</span>
                                 </div>
@@ -266,130 +233,165 @@
         </div>
     </section>
 
-    <!-- Карта учебных ресурсов (доп. задание) -->
-    <section id="map" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5 section-title">Интерактивная карта учебных ресурсов</h2>
-            
-            <div class="row mb-4">
-                <div class="col-lg-8 mx-auto">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="map-search" placeholder="Поиск: языковые курсы, библиотеки, культурные центры...">
-                                <button class="btn" id="map-search-btn">
-                                    <i class="bi bi-search"></i> Найти
-                                </button>
-                            </div>
-                            
-                            <div class="row mt-3 g-2" id="map-filters">
-                                <div class="col-6 col-md-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="filter-education" checked>
-                                        <label class="form-check-label" for="filter-education">
-                                            Образовательные учреждения
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="filter-libraries" checked>
-                                        <label class="form-check-label" for="filter-libraries">
-                                            Библиотеки
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="filter-centers" checked>
-                                        <label class="form-check-label" for="filter-centers">
-                                            Культурные центры
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="filter-cafes" checked>
-                                        <label class="form-check-label" for="filter-cafes">
-                                            Языковые кафе
-                                        </label>
-                                    </div>
+    <!-- Интерактивная карта -->
+<section id="map-section" class="py-5 section-spacing">
+    <div class="container">
+        <h2 class="text-center mb-5 section-title">Интерактивная карта языковых ресурсов</h2>
+        
+        <!-- Поиск и фильтры -->
+        <div class="row mb-4">
+            <div class="col-lg-12">
+                <div class="card shadow-sm mb-3">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="map-search" class="form-label">Поиск языковых ресурсов</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="map-search" 
+                                           placeholder="Введите название места, адрес или тип ресурса...">
+                                    <button class="btn btn-primary" type="button" id="search-btn">
+                                        <i class="bi bi-search"></i>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Контейнер для карты -->
-            <div id="map-container" class="shadow rounded">
-                <div id="map" style="height: 500px; width: 100%; border-radius: 10px;"></div>
-            </div>
-            
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Как пользоваться картой</h5>
-                            <ul>
-                                <li>Используйте поиск для быстрого нахождения мест</li>
-                                <li>Фильтруйте результаты по типу ресурса</li>
-                                <li>Кликайте на маркеры для получения информации</li>
-                                <li>Используйте масштаб для детального просмотра</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Популярные ресурсы</h5>
-                            <ul>
-                                <li>Институт Конфуция МГУ</li>
-                                <li>Китайский культурный центр</li>
-                                <li>Библиотека иностранной литературы</li>
-                                <li>Клуб разговорного китайского языка</li>
-                            </ul>
+                            <div class="col-md-6">
+                                <label class="form-label">Фильтровать по типу:</label>
+                                <div class="d-flex flex-wrap gap-2" id="filter-buttons">
+    <button class="btn btn-sm filter-btn active" data-type="all">
+        Все
+    </button>
+    <button class="btn btn-sm filter-btn" data-type="education">
+        Образовательные учреждения
+    </button>
+    <button class="btn btn-sm filter-btn" data-type="library">
+        Библиотеки
+    </button>
+    <button class="btn btn-sm filter-btn" data-type="culture">
+        Культурные центры
+    </button>
+    <button class="btn btn-sm filter-btn" data-type="cafe">
+        Языковые кафе
+    </button>
+</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <!-- Карта -->
+        <div id="map-container" class="shadow-lg rounded mb-4">
+            <!-- Яндекс.Карта будет загружена через JavaScript -->
+        </div>
+        
+        <!-- Инструкция и популярные места -->
+        <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Как пользоваться картой</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="bi bi-search text-primary me-2"></i>
+                                <strong>Используйте поиск</strong> для быстрого нахождения мест
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-funnel text-primary me-2"></i>
+                                <strong>Фильтруйте результаты</strong> по типу ресурса
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <strong>Нажмите на маркер</strong> для получения подробной информации
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-zoom-in text-primary me-2"></i>
+                                <strong>Используйте масштаб</strong> для детального просмотра
+                            </li>
+                            <li>
+                                <i class="bi bi-star text-primary me-2"></i>
+                                <strong>Изучайте отзывы</strong> и актуальную информацию о местах
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Популярные языковые центры</h5>
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Институт Конфуция МГУ</h6>
+                                    <small class="text-muted">Китайский язык и культура</small>
+                                </div>
+                                <span class="badge bg-primary">Образование</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Британский Совет</h6>
+                                    <small class="text-muted">Английский язык, экзамены IELTS</small>
+                                </div>
+                                <span class="badge bg-success">Библиотека</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Гёте-Институт</h6>
+                                    <small class="text-muted">Немецкий язык, культурные мероприятия</small>
+                                </div>
+                                <span class="badge bg-warning">Культурный центр</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Esp Club Moscú</h6>
+                                    <small class="text-muted">Испанский разговорный клуб</small>
+                                </div>
+                                <span class="badge bg-info">Кафе</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Футер -->
     <footer id="contact" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h5 class="mb-3 fw-bold">Learn Chinese</h5>
-                    <p>Ваш путь к свободному владению китайским языком начинается здесь.</p>
+                    <h5 class="mb-3 fw-bold">Polyglot School</h5>
+                    <p>Школа иностранных языков в Москве. Изучайте 8 языков с профессиональными преподавателями.</p>
                     <div class="d-flex gap-3 mt-3">
-                        <a href="#" class="text-dark"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-dark"><i class="bi bi-twitter fs-5"></i></a>
-                        <a href="#" class="text-dark"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-dark"><i class="bi bi-youtube fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-telegram fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-youtube fs-5"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
                     <h5 class="mb-3 fw-bold">Контакты</h5>
-                    <p><i class="bi bi-envelope me-2"></i> info@learnchinese.ru</p>
+                    <p><i class="bi bi-envelope me-2"></i> info@polyglotschool.ru</p>
                     <p><i class="bi bi-telephone me-2"></i> +7 (495) 123-45-67</p>
                     <p><i class="bi bi-geo-alt me-2"></i> Москва, ул. Образцова, 25</p>
+                    <p><i class="bi bi-clock me-2"></i> Пн-Пт: 9:00-21:00, Сб-Вс: 10:00-18:00</p>
                 </div>
                 <div class="col-lg-4 mb-4">
-                    <h5 class="mb-3 fw-bold">Полезные ссылки</h5>
+                    <h5 class="mb-3 fw-bold">Быстрые ссылки</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-decoration-none">Главная</a></li>
-                        <li><a href="#courses" class="text-decoration-none">Курсы</a></li>
+                        <li><a href="#courses" class="text-decoration-none">Все курсы</a></li>
                         <li><a href="#tutors" class="text-decoration-none">Репетиторы</a></li>
                         <li><a href="dashboard.html" class="text-decoration-none">Личный кабинет</a></li>
+                        <li><a href="#" class="text-decoration-none" id="trial-lesson-btn">Записаться на пробный урок</a></li>
                     </ul>
                 </div>
             </div>
             <hr>
             <div class="text-center pt-3">
-                <p class="mb-0">&copy; 2024 Learn Chinese. Все права защищены.</p>
+                <p class="mb-0">&copy; 2026 Polyglot School. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -497,7 +499,7 @@
                                         <h5 class="card-title mb-3">Общая стоимость</h5>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="fs-4">Итого:</span>
-                                            <span class="fs-3 fw-bold" id="modal-total-price">0 руб</span>
+                                            <span class="fs-3 fw-bold text-primary" id="modal-total-price">0 руб</span>
                                         </div>
                                     </div>
                                 </div>
@@ -507,7 +509,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <button type="button" class="btn" id="submit-application">Отправить заявку</button>
+                    <button type="button" class="btn btn-primary" id="submit-application">Отправить заявку</button>
                 </div>
             </div>
         </div>
@@ -549,7 +551,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <button type="button" class="btn" id="submit-tutor-request">Отправить заявку</button>
+                    <button type="button" class="btn btn-primary" id="submit-tutor-request">Отправить заявку</button>
                 </div>
             </div>
         </div>
@@ -558,12 +560,58 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Яндекс.Карты -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=02e0b5d0-e1b4-4627-8cee-2237dc63579c&lang=ru_RU" type="text/javascript"></script>
+    
     <!-- Пользовательские скрипты -->
     <script src="./settings/scripts/api.js"></script>
     <script src="./settings/scripts/main.js"></script>
-    
-    <!-- Яндекс.Карты -->
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU" type="text/javascript"></script>
     <script src="./settings/scripts/map.js"></script>
+<div class="modal fade" id="trialLessonModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Заявка на пробный урок</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="trial-lesson-form">
+                    <div class="mb-3">
+                        <label class="form-label">Выберите курс</label>
+                        <select class="form-select" id="trial-course-select" required>
+                            <option value="">Выберите курс</option>
+                            <!-- Курсы будут добавлены через JavaScript -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Дата занятия</label>
+                        <input type="date" class="form-control" id="trial-date-start" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Время начала</label>
+                        <input type="time" class="form-control" id="trial-time-start" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Продолжительность (часов)</label>
+                        <input type="number" class="form-control" id="trial-duration" min="1" max="2" value="1" required>
+                        <div class="form-text">Пробный урок длится 1-2 часа</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Количество студентов</label>
+                        <input type="number" class="form-control" id="trial-persons" min="1" max="20" value="1" required>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Пробный урок проводится бесплатно!
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="submit-trial-lesson">Отправить заявку</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
