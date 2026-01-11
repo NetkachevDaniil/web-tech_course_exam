@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MandarinMastery - Изучение китайского языка</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <title>Learn Chinese - Изучение китайского языка</title>
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Пользовательские стили -->
     <link rel="stylesheet" href="./static/css/style.css">
-    <link rel="icon" href="./static/img/logo.png" type="image/png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./static/img/logo.svg" type="image/svg+xml">
 </head>
 <body>
+
     <!-- Шапка сайта -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary fixed-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="./static/img/logo.png" alt="MandarinMastery Logo" height="40" class="me-2 rounded-circle">
-                <span class="fw-bold">MandarinMastery</span>
+                <i class="bi bi-translate fs-3 me-2"></i>
+                <span class="fw-bold">Learn Chinese</span>
             </a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -32,13 +41,16 @@
                         <a class="nav-link" href="#tutors">Репетиторы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#advantages">Преимущества</a>
+                        <a class="nav-link" href="#about">О нас</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.html">Личный кабинет</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contacts">Контакты</a>
+                        <a class="nav-link" href="#map">Карта ресурсов</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Контакты</a>
                     </li>
                 </ul>
             </div>
@@ -49,66 +61,43 @@
     <div id="notification-area" class="container mt-5 pt-5"></div>
 
     <!-- Hero секция -->
-    <header class="bg-gradient-hero py-5 mt-5">
+    <header class="hero-section py-5 mt-5">
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="display-4 fw-bold text-white">Погрузитесь в мир китайского языка</h1>
-                    <p class="lead text-white-75 mb-4">Наша школа предлагает качественные курсы китайского языка для всех уровней — от начинающих до продвинутых.</p>
-                    <a href="#courses" class="btn btn-light btn-lg px-4 me-2">Начать обучение</a>
-                    <a href="#tutors" class="btn btn-outline-light btn-lg px-4">Выбрать репетитора</a>
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-3">Откройте для себя мир китайского языка!</h1>
+                    <p class="lead mb-4">Присоединяйтесь к нашей школе и начните изучать один из самых древних и богатых языков мира. Наши курсы подходят для любого уровня подготовки.</p>
+                    <a href="#courses" class="btn btn-lg px-4">Начать обучение</a>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
-                         alt="Изучение китайского языка" class="img-fluid rounded-4 shadow-lg">
+                    <div class="hero-image">
+                        <i class="bi bi-chat-square-quote display-1"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Блок описания школы -->
+    <!-- О школе -->
     <section id="about" class="py-5">
         <div class="container">
+            <h2 class="text-center mb-5 section-title">О нашей языковой школе</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <div class="card border-0 shadow-lg">
-                        <div class="card-body p-5">
-                            <div class="text-center mb-4">
-                                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
-                                    <i class="bi bi-book fs-1 text-primary"></i>
-                                </div>
-                                <h2 class="h1 fw-bold">О нашей языковой школе</h2>
-                            </div>
-                            <p class="lead mb-4">MandarinMastery — это современная языковая школа, специализирующаяся на обучении китайскому языку. Мы сочетаем традиционные методики с инновационными подходами для достижения максимальных результатов.</p>
-                            <p class="mb-4">Наша миссия — сделать изучение китайского языка доступным, интересным и эффективным для каждого студента, независимо от возраста и начального уровня знаний.</p>
-                            
-                            <div class="row mt-5">
-                                <div class="col-md-6 mb-4">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0">
-                                            <div class="bg-primary bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                                <i class="bi bi-award text-primary fs-4"></i>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <h5 class="fw-bold">Качество образования</h5>
-                                            <p class="mb-0 text-secondary">Все наши преподаватели имеют высшее образование и многолетний опыт работы.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0">
-                                            <div class="bg-success bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                                <i class="bi bi-globe text-success fs-4"></i>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <h5 class="fw-bold">Международные стандарты</h5>
-                                            <p class="mb-0 text-secondary">Программы обучения соответствуют международным стандартам HSK.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="card-title h4 mb-3">Наша миссия</h3>
+                            <p class="card-text">Мы предоставляем качественное образование всем, кто интересуется изучением китайского языка. Наша школа предлагает разнообразные курсы для всех уровней владения языком - от начинающих до продвинутых.</p>
+                            <p class="card-text">Наша цель - не только научить вас языку, но и познакомить с богатой китайской культурой, историей и традициями.</p>
+                            <div class="mt-4">
+                                <h4 class="h5 mb-3">Что мы предлагаем:</h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Сертифицированные преподаватели</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Интерактивные занятия</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Гибкий график обучения</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Современные методики обучения</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Подготовка к экзаменам HSK</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -117,47 +106,41 @@
         </div>
     </section>
 
-    <!-- Преимущества изучения китайского языка -->
-    <section id="advantages" class="py-5 bg-light">
+    <!-- Преимущества изучения китайского -->
+    <section class="py-5 benefits-section">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5">Преимущества изучения китайского языка</h2>
+            <h2 class="text-center mb-5 section-title">Преимущества изучения китайского</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body text-center p-4">
-                            <div class="mb-4">
-                                <div class="bg-info bg-opacity-25 rounded-circle d-inline-flex p-3">
-                                    <i class="bi bi-globe2 text-info fs-1"></i>
-                                </div>
+                            <div class="mb-3">
+                                <i class="bi bi-globe-asia-australia display-5"></i>
                             </div>
-                            <h3 class="card-title h4 fw-bold mb-3">Международные возможности</h3>
-                            <p class="card-text">Китайский язык открывает двери для карьеры в международных компаниях, дипломатии и научных исследованиях.</p>
+                            <h3 class="card-title h5">Международный язык</h3>
+                            <p class="card-text">Китайский язык является одним из самых распространенных языков в мире и официальным языком КНР, Тайваня и Сингапура.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body text-center p-4">
-                            <div class="mb-4">
-                                <div class="bg-warning bg-opacity-25 rounded-circle d-inline-flex p-3">
-                                    <i class="bi bi-currency-yen text-warning fs-1"></i>
-                                </div>
+                            <div class="mb-3">
+                                <i class="bi bi-bank display-5"></i>
                             </div>
-                            <h3 class="card-title h4 fw-bold mb-3">Экономические преимущества</h3>
-                            <p class="card-text">Знание китайского языка значительно повышает конкурентоспособность на рынке труда и открывает возможности для бизнеса.</p>
+                            <h3 class="card-title h5">Богатая культура</h3>
+                            <p class="card-text">Погрузитесь в мир китайской литературы, искусства и философии. Понимайте произведения Конфуция и Лао-цзы в оригинале.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body text-center p-4">
-                            <div class="mb-4">
-                                <div class="bg-purple bg-opacity-25 rounded-circle d-inline-flex p-3">
-                                    <i class="bi bi-brush text-purple fs-1"></i>
-                                </div>
+                            <div class="mb-3">
+                                <i class="bi bi-briefcase display-5"></i>
                             </div>
-                            <h3 class="card-title h4 fw-bold mb-3">Культурное погружение</h3>
-                            <p class="card-text">Изучение языка помогает глубже понять древнюю и богатую китайскую культуру, традиции и философию.</p>
+                            <h3 class="card-title h5">Карьерные возможности</h3>
+                            <p class="card-text">Откройте новые возможности в международном бизнесе, дипломатии, науке и туризме со знанием китайского языка.</p>
                         </div>
                     </div>
                 </div>
@@ -165,11 +148,12 @@
         </div>
     </section>
 
-    <!-- Предлагаемые курсы -->
+    <!-- Курсы -->
     <section id="courses" class="py-5">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5">Наши курсы</h2>
+            <h2 class="text-center mb-5 section-title">Наши курсы</h2>
             
+            <!-- Поиск курсов -->
             <div class="row mb-4">
                 <div class="col-lg-8 mx-auto">
                     <div class="card shadow-sm">
@@ -195,22 +179,30 @@
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Контейнер для курсов -->
             <div id="courses-container" class="row g-4">
                 <!-- Курсы будут загружены через JavaScript -->
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Загрузка...</span>
+                    </div>
+                    <p class="mt-2">Загрузка курсов...</p>
+                </div>
             </div>
-            
+
+            <!-- Пагинация курсов -->
             <nav id="courses-pagination" class="mt-5 d-flex justify-content-center">
-                <!-- Пагинация будет сгенерирована через JavaScript -->
             </nav>
         </div>
     </section>
 
-    <!-- Поиск репетиторов -->
-    <section id="tutors" class="py-5 bg-gradient-light">
+    <!-- Репетиторы -->
+    <section id="tutors" class="py-5 tutors-section">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5">Наши репетиторы</h2>
+            <h2 class="text-center mb-5 section-title">Наши репетиторы</h2>
             
+            <!-- Поиск репетиторов -->
             <div class="row mb-4">
                 <div class="col-lg-8 mx-auto">
                     <div class="card shadow-sm">
@@ -218,10 +210,10 @@
                             <form id="tutor-search-form">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label for="tutor-language" class="form-label">Предлагаемые языки</label>
+                                        <label for="tutor-language" class="form-label">Язык преподавания</label>
                                         <select class="form-select" id="tutor-language">
                                             <option value="">Все языки</option>
-                                            <!-- Языки будут загружены через JavaScript -->
+                                            <!-- Языки будут добавлены через JavaScript -->
                                         </select>
                                     </div>
                                     <div class="col-md-6">
@@ -239,45 +231,53 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="table-responsive shadow-sm rounded">
-                <table class="table table-hover table-striped align-middle">
-                    <thead class="table-primary">
+
+            <!-- Таблица репетиторов -->
+            <div class="table-responsive">
+                <table class="table table-hover" id="tutors-table">
+                    <thead>
                         <tr>
                             <th>Имя репетитора</th>
                             <th>Уровень языка</th>
-                            <th>Языки</th>
+                            <th>Языки преподавания</th>
                             <th>Опыт (лет)</th>
                             <th>Ставка (руб./час)</th>
                             <th>Действия</th>
                         </tr>
                     </thead>
                     <tbody id="tutors-body">
-                        <!-- Репетиторы будут загружены через JavaScript -->
+                        <tr>
+                            <td colspan="6" class="text-center py-5">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Загрузка...</span>
+                                </div>
+                                <p class="mt-2">Загрузка репетиторов...</p>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-            
+
             <div class="text-center mt-4">
-                <button class="btn btn-primary btn-lg px-5" data-bs-toggle="modal" data-bs-target="#tutorRequestModal">
-                    <i class="bi bi-chat-left-text me-2"></i>Запросить занятие с репетитором
+                <button class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#tutorRequestModal">
+                    <i class="bi bi-calendar-check me-2"></i>Записаться к репетитору
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Карта учебных ресурсов (дополнительное задание) -->
-    <section id="resources-map" class="py-5">
+    <!-- Карта учебных ресурсов (доп. задание) -->
+    <section id="map" class="py-5">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5">Интерактивная карта учебных ресурсов</h2>
+            <h2 class="text-center mb-5 section-title">Интерактивная карта учебных ресурсов</h2>
             
             <div class="row mb-4">
                 <div class="col-lg-8 mx-auto">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="map-search" placeholder="Поиск: языковые курсы, библиотеки, кафе...">
-                                <button class="btn btn-primary" id="map-search-btn">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="map-search" placeholder="Поиск: языковые курсы, библиотеки, культурные центры...">
+                                <button class="btn" id="map-search-btn">
                                     <i class="bi bi-search"></i> Найти
                                 </button>
                             </div>
@@ -321,37 +321,34 @@
                 </div>
             </div>
             
-            <div id="map-container" style="height: 500px; border-radius: 15px; overflow: hidden;" class="shadow-lg">
-                <div id="map" style="height: 100%; width: 100%;"></div>
+            <!-- Контейнер для карты -->
+            <div id="map-container" class="shadow rounded">
+                <div id="map" style="height: 500px; width: 100%; border-radius: 10px;"></div>
             </div>
             
             <div class="row mt-4">
                 <div class="col-md-6">
-                    <div class="card border-primary">
-                        <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">Как пользоваться картой</h5>
-                        </div>
+                    <div class="card">
                         <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><i class="bi bi-search me-2 text-primary"></i>Используйте поиск для быстрого нахождения мест</li>
-                                <li class="list-group-item"><i class="bi bi-funnel me-2 text-primary"></i>Фильтруйте результаты по типу ресурсов</li>
-                                <li class="list-group-item"><i class="bi bi-pin-map me-2 text-primary"></i>Кликайте на метки для получения подробной информации</li>
-                                <li class="list-group-item"><i class="bi bi-zoom-in me-2 text-primary"></i>Используйте зум для детального просмотра</li>
+                            <h5 class="card-title">Как пользоваться картой</h5>
+                            <ul>
+                                <li>Используйте поиск для быстрого нахождения мест</li>
+                                <li>Фильтруйте результаты по типу ресурса</li>
+                                <li>Кликайте на маркеры для получения информации</li>
+                                <li>Используйте масштаб для детального просмотра</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card border-success">
-                        <div class="card-header bg-success text-white">
-                            <h5 class="mb-0">Популярные ресурсы в Москве</h5>
-                        </div>
+                    <div class="card">
                         <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Китайский культурный центр</li>
-                                <li class="list-group-item">Библиотека восточной литературы</li>
-                                <li class="list-group-item">Языковой клуб "Восток-Запад"</li>
-                                <li class="list-group-item">Кафе языкового обмена "Dragon"</li>
+                            <h5 class="card-title">Популярные ресурсы</h5>
+                            <ul>
+                                <li>Институт Конфуция МГУ</li>
+                                <li>Китайский культурный центр</li>
+                                <li>Библиотека иностранной литературы</li>
+                                <li>Клуб разговорного китайского языка</li>
                             </ul>
                         </div>
                     </div>
@@ -361,107 +358,102 @@
     </section>
 
     <!-- Футер -->
-    <footer id="contacts" class="bg-dark text-white py-5 mt-5">
+    <footer id="contact" class="py-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="mb-3 fw-bold">MandarinMastery</h5>
-                    <p>Ваш путь к мастерству китайского языка начинается здесь. Мы поможем вам достичь ваших целей в изучении китайского языка.</p>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3 fw-bold">Learn Chinese</h5>
+                    <p>Ваш путь к свободному владению китайским языком начинается здесь.</p>
                     <div class="d-flex gap-3 mt-3">
-                        <a href="#" class="text-white opacity-75 hover-opacity-100"><i class="bi bi-facebook fs-4"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-opacity-100"><i class="bi bi-twitter fs-4"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-opacity-100"><i class="bi bi-instagram fs-4"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-opacity-100"><i class="bi bi-youtube fs-4"></i></a>
+                        <a href="#" class="text-dark"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-dark"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-dark"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-dark"><i class="bi bi-youtube fs-5"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="col-lg-4 mb-4">
                     <h5 class="mb-3 fw-bold">Контакты</h5>
-                    <p><i class="bi bi-envelope me-2"></i> info@mandarinmastery.ru</p>
+                    <p><i class="bi bi-envelope me-2"></i> info@learnchinese.ru</p>
                     <p><i class="bi bi-telephone me-2"></i> +7 (495) 123-45-67</p>
-                    <p><i class="bi bi-geo-alt me-2"></i> Москва, ул. Ленинская, 42</p>
-                    <p><i class="bi bi-clock me-2"></i> Пн-Пт: 9:00-20:00, Сб: 10:00-16:00</p>
+                    <p><i class="bi bi-geo-alt me-2"></i> Москва, ул. Образцова, 25</p>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 mb-4">
                     <h5 class="mb-3 fw-bold">Полезные ссылки</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Расписание занятий</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Цены на курсы</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Материалы для обучения</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">FAQ</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100">Отзывы студентов</a></li>
+                        <li><a href="index.html" class="text-decoration-none">Главная</a></li>
+                        <li><a href="#courses" class="text-decoration-none">Курсы</a></li>
+                        <li><a href="#tutors" class="text-decoration-none">Репетиторы</a></li>
+                        <li><a href="dashboard.html" class="text-decoration-none">Личный кабинет</a></li>
                     </ul>
                 </div>
             </div>
-            <hr class="bg-light my-4">
+            <hr>
             <div class="text-center pt-3">
-                <p class="mb-0">&copy; 2026 MandarinMastery. Все права защищены.</p>
+                <p class="mb-0">&copy; 2024 Learn Chinese. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Модальное окно для оформления заявки на курс -->
-    <div class="modal fade" id="applyModal" tabindex="-1" aria-hidden="true">
+    <!-- Модальное окно заявки на курс -->
+    <div class="modal fade" id="applyModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title"><i class="bi bi-file-earmark-text me-2"></i>Оформление заявки на курс</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header">
+                    <h5 class="modal-title">Оформление заявки на курс</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form id="course-application-form">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">Название курса</label>
+                                <label class="form-label">Название курса</label>
                                 <input type="text" class="form-control" id="modal-course-name" readonly>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">Преподаватель</label>
+                                <label class="form-label">Преподаватель</label>
                                 <input type="text" class="form-control" id="modal-course-teacher" readonly>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">Дата начала</label>
+                                <label class="form-label">Дата начала</label>
                                 <select class="form-select" id="modal-start-date">
                                     <option value="">Выберите дату начала</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">Время занятий</label>
+                                <label class="form-label">Время занятия</label>
                                 <select class="form-select" id="modal-start-time" disabled>
                                     <option value="">Сначала выберите дату</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">Продолжительность</label>
+                                <label class="form-label">Продолжительность</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="modal-duration" readonly>
                                     <span class="input-group-text">недель</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">Дата окончания</label>
+                                <label class="form-label">Дата окончания</label>
                                 <input type="text" class="form-control" id="modal-end-date" readonly>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">Количество студентов</label>
+                                <label class="form-label">Количество студентов</label>
                                 <input type="number" class="form-control" id="modal-students" min="1" max="20" value="1">
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">Общая продолжительность</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="modal-total-hours" readonly>
-                                    <span class="input-group-text">часов</span>
-                                </div>
+                                <label class="form-label">Общая длительность (часов)</label>
+                                <input type="text" class="form-control" id="modal-total-hours" readonly>
                             </div>
                             
-                            <!-- Дополнительные параметры обучения -->
+                            <!-- Дополнительные опции -->
                             <div class="col-12">
-                                <h6 class="mt-3 mb-2 fw-bold">Дополнительные параметры обучения</h6>
+                                <h6 class="mt-3 mb-2">Дополнительные опции</h6>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-check mb-2">
                                             <input class="form-check-input" type="checkbox" id="modal-supplementary">
                                             <label class="form-check-label" for="modal-supplementary">
-                                                Дополнительные учебные материалы (+2000 руб/студент)
+                                                Дополнительные материалы (+2000 руб/студент)
                                             </label>
                                         </div>
                                         <div class="form-check mb-2">
@@ -481,13 +473,13 @@
                                         <div class="form-check mb-2">
                                             <input class="form-check-input" type="checkbox" id="modal-assessment">
                                             <label class="form-check-label" for="modal-assessment">
-                                                Оценка уровня владения языка (+300 руб)
+                                                Оценка уровня (+300 руб)
                                             </label>
                                         </div>
                                         <div class="form-check mb-2">
                                             <input class="form-check-input" type="checkbox" id="modal-interactive">
                                             <label class="form-check-label" for="modal-interactive">
-                                                Доступ к интерактивной онлайн-платформе (+50%)
+                                                Интерактивная платформа (+50%)
                                             </label>
                                         </div>
                                     </div>
@@ -495,18 +487,17 @@
                             </div>
                             
                             <div class="col-12">
-                                <div class="alert alert-info d-none" id="discount-info">
-                                    <!-- Скидки будут отображены здесь -->
+                                <div class="alert alert-info" id="discount-info" style="display: none;">
                                 </div>
                             </div>
                             
                             <div class="col-12">
-                                <div class="card bg-light border-primary">
+                                <div class="card bg-light">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-3 fw-bold text-primary">Общая стоимость курса</h5>
+                                        <h5 class="card-title mb-3">Общая стоимость</h5>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <span class="fs-4 fw-bold">Итого:</span>
-                                            <span class="fs-3 fw-bold text-primary" id="modal-total-price">0 руб</span>
+                                            <span class="fs-4">Итого:</span>
+                                            <span class="fs-3 fw-bold" id="modal-total-price">0 руб</span>
                                         </div>
                                     </div>
                                 </div>
@@ -516,63 +507,63 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <button type="button" class="btn btn-primary" id="submit-application">
-                        <i class="bi bi-check-circle me-2"></i>Отправить заявку
-                    </button>
+                    <button type="button" class="btn" id="submit-application">Отправить заявку</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Модальное окно для запроса репетитора -->
-    <div class="modal fade" id="tutorRequestModal" tabindex="-1" aria-hidden="true">
+    <!-- Модальное окно заявки на репетитора -->
+    <div class="modal fade" id="tutorRequestModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header bg-info text-white">
-                    <h5 class="modal-title"><i class="bi bi-person-video3 me-2"></i>Запрос занятия с репетитором</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header">
+                    <h5 class="modal-title">Заявка на занятие с репетитором</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form id="tutor-request-form">
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Выберите репетитора</label>
+                            <label class="form-label">Выберите репетитора</label>
                             <select class="form-select" id="request-tutor-select">
                                 <option value="">Выберите репетитора</option>
-                                <!-- Репетиторы будут загружены через JavaScript -->
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Дата занятия</label>
+                            <label class="form-label">Дата занятия</label>
                             <input type="date" class="form-control" id="request-date" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Время начала</label>
+                            <label class="form-label">Время начала</label>
                             <input type="time" class="form-control" id="request-time" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Продолжительность (часов)</label>
+                            <label class="form-label">Продолжительность (часов)</label>
                             <input type="number" class="form-control" id="request-duration" min="1" max="40" value="1" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Количество студентов</label>
+                            <label class="form-label">Количество студентов</label>
                             <input type="number" class="form-control" id="request-persons" min="1" max="20" value="1" required>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <button type="button" class="btn btn-info text-white" id="submit-tutor-request">
-                        <i class="bi bi-send me-2"></i>Отправить запрос
-                    </button>
+                    <button type="button" class="btn" id="submit-tutor-request">Отправить заявку</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Пользовательские скрипты -->
     <script src="./static/scripts/api.js"></script>
     <script src="./static/scripts/main.js"></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=c5e0f3b0-7a7d-4f5b-89d6-60e3643b9c7e&lang=ru_RU" type="text/javascript"></script>
+    
+    <!-- Яндекс.Карты -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU" type="text/javascript"></script>
     <script src="./static/scripts/map.js"></script>
 </body>
 </html>
