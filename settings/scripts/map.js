@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             contact: '+7 (495) 939-55-55',
             description: 'Китайский язык и культура, подготовка к HSK, культурные мероприятия',
             coordinates: [55.697662, 37.539071],
-            website: 'https://confucius.msu.ru/'
+            website: 'https://cimsu.ru/'
         },
         {
             id: 2,
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             contact: '+7 (495) 287-18-00',
             description: 'Английский язык, подготовка к IELTS, курсы для преподавателей',
             coordinates: [55.748819, 37.648160],
-            website: 'https://www.britishcouncil.ru/'
+            website: 'https://russia.britishcouncil.org/'
         },
         {
             id: 3,
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             contact: '+7 (495) 959-88-99',
             description: 'Испанский разговорный клуб, тапас, испанская атмосфера',
             coordinates: [55.738078, 37.654975],
-            website: 'https://cafe-espanol.ru/'
+            website: 'https://espclubmoscu.com/'
         },
         {
             id: 8,
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
             contact: '+7 (495) 123-45-67',
             description: 'Английский разговорный клуб, кофе, общение с носителями языка',
             coordinates: [55.781398, 37.598537],
-            website: '#'
+            website: 'https://vk.com/speak_english_moscow'
         }
     ];
 
@@ -502,3 +502,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 1000);
 });
+
